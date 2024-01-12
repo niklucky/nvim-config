@@ -38,6 +38,10 @@ return {
       })
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+      -- See `:help K` for why this keymap
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover Documentation'})
+      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
+
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
       vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
