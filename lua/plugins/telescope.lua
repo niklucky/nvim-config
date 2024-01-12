@@ -2,8 +2,62 @@ return {
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+      -- Only load if `make` is available. Make sure you have the system
+      -- requirements installed.
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        -- NOTE: If you are having trouble with this installation,
+        --       refer to the README for telescope-fzf-native for more instructions.
+        build = 'make',
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
+
+    },
     config = function()
+      require('telescope').load_extension('fzf')
+      -- [[ Configure Telescope ]]
+
+      -- import telescope actions safely
+      local actions_setup, actions = pcall(require, 'telescope.actions')
+      if not actions_setup then
+        return
+      end
+
+      -- See `:help telescope` and `:help telescope.setup()`
+      require('telescope').setup {
+        defaults = {
+          mappings = {
+            i = {
+              ['<C-u>'] = false,
+              ['<C-d>'] = false,
+              ['<C-k>'] = actions.move_selection_previous, -- move to prev result
+              ['<C-j>'] = actions.move_selection_next, -- move to next result
+              ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
+            },
+          },
+        },
+        extensions = {
+          ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+              -- even more opts
+            }
+          }
+        }
+
+      }
+
+      -- Enable telescope fzf native, if installed
+      pcall(require('telescope').load_extension, 'fzf')
+      pcall(require("telescope").load_extension, "ui-select")
+
+
+
+
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
       vim.keymap.set('n', '<C-p>', builtin.find_files, {})
@@ -28,16 +82,6 @@ return {
   {
     "nvim-telescope/telescope-ui-select.nvim",
     config = function()
-      require("telescope").setup {
-        extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown {
-              -- even more opts
-            }
-          }
-        }
-      }
-      require("telescope").load_extension("ui-select")
     end
   }
 }
