@@ -14,6 +14,13 @@ return {
     end
   },
   {
+    "folke/neodev.nvim",
+    config = function ()
+      -- Setup neovim lua configuration
+      require('neodev').setup()
+    end
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       -- Set up lspconfig.
