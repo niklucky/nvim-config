@@ -9,7 +9,16 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "gopls", "rust_analyzer", "svelte", "html" },
+        ensure_installed = {
+          "lua_ls",
+          "tsserver",
+          "gopls",
+          "rust_analyzer",
+          "svelte",
+          "html",
+          "astro",
+          "tailwindcss",
+        },
       })
     end,
   },
@@ -40,6 +49,9 @@ return {
       lspconfig.svelte.setup({
         capabilities = capabilities,
       })
+      lspconfig.astro.setup({
+        capabilities = capabilities,
+      })
       lspconfig.rust_analyzer.setup({
         capabilities = capabilities,
       })
@@ -47,6 +59,12 @@ return {
         capabilities = capabilities,
       })
       lspconfig.html.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.emmet_ls.setup({
         capabilities = capabilities,
       })
 
