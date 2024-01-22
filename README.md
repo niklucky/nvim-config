@@ -19,6 +19,16 @@ mv ~/.config/nvim ~/.config/nvim.YYYY-MM-DD
 git clone git@github.com:niklucky/nvim-config.git ~/.config/nvim
 ```
 
+## Git integration
+
+`lazygit`:
+
+```shell
+brew install jesseduffield/lazygit/lazygit
+```
+
+https://github.com/jesseduffield/lazygit
+
 ## Tech stack
 
 Something was setup and tested because I need it right now, something I will setup later.
