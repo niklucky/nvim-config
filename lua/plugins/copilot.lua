@@ -2,7 +2,7 @@ return {
 	"github/copilot.vim",
 	config = function()
 		vim.g.copilot_assume_mapped = true
-		vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
+		vim.keymap.set("i", "<C-l>", 'copilot#Accept("\\<CR>")', {
 			script = true,
 			silent = true,
 			expr = true,
