@@ -67,7 +67,29 @@ return {
 			lspconfig.emmet_ls.setup({
 				capabilities = capabilities,
 			})
-
+			lspconfig.pylsp.setup({
+				capabilities = capabilities,
+				settings = {
+					pylsp = {
+						plugins = {
+							-- formatter options
+							black = { enabled = true },
+							autopep8 = { enabled = false },
+							yapf = { enabled = false },
+							-- linter options
+							pylint = { enabled = true, executable = "pylint" },
+							pyflakes = { enabled = false },
+							pycodestyle = { enabled = false },
+							-- type checker
+							pylsp_mypy = { enabled = true },
+							-- auto-completion options
+							jedi_completion = { fuzzy = true },
+							-- import sorting
+							pyls_isort = { enabled = true },
+						},
+					},
+				},
+			})
 			local telescope_builtin = require("telescope.builtin")
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
