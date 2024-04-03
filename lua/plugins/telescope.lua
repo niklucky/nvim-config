@@ -92,9 +92,9 @@ return {
 			vim.keymap.set("n", "<leader>ds", function()
 				builtin.lsp_document_symbols({ show_line = true })
 			end, { desc = "[D]ocument [S]ymbols" })
-			vim.keymap.set("n", "<leader>dsm", function()
+			vim.keymap.set("n", "<leader>dm", function()
 				builtin.lsp_document_symbols({ show_line = true, symbols = { "Method" } })
-			end, { desc = "[D]ocument [S]ymbols" })
+			end, { desc = "[D]ocument symbols [M]ethods" })
 		end,
 	},
 	{
