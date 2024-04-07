@@ -19,17 +19,18 @@ keymap.set("n", "<leader>p", '"_dP')
 keymap.set("n", "<C-a>", "gg0VG")
 
 -- window management
-keymap.set("n", "<leader>wv", "<C-w>v")        -- split window vertically
-keymap.set("n", "<leader>wh", "<C-w>s")        -- split window horizontally
+keymap.set("n", "<leader>wv", "<C-w>v") -- split window vertically
+keymap.set("n", "<leader>wh", "<C-w>s") -- split window horizontally
 -- keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-keymap.set("n", "<leader>wx", ":close<CR>")    -- close current split window
+keymap.set("n", "<leader>wx", ":close<CR>") -- close current split window
 
-keymap.set("n", "<leader>to", ":tabnew<CR>")   -- open new tab
+keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
+keymap.set("n", "<C-t>", ":tabnew<CR>") -- open new tab
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 -- keymap.set('n', '<leader>tn', ':tabn<CR>') --  go to next tab
 -- keymap.set('n', '<leader>tp', ':tabp<CR>') --  go to previous tab
 
-keymap.set("n", "<tab>", ":tabn<CR>")   --  go to next tab
+keymap.set("n", "<tab>", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<S-tab>", ":tabp<CR>") --  go to previous tab
 
 ----------------------
