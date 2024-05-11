@@ -36,6 +36,14 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			local lspconfig = require("lspconfig")
+			local function organize_imports()
+				local params = {
+					command = "_typescript.organizeImports",
+					arguments = { vim.api.nvim_buf_get_name(0) },
+					title = "",
+				}
+				vim.lsp.buf.execute_command(params)
+			end
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
@@ -45,6 +53,12 @@ return {
 			})
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
+				commands = {
+					OrganizeImports = {
+						organize_imports,
+						description = "Organize Imports",
+					},
+				},
 			})
 			lspconfig.svelte.setup({
 				capabilities = capabilities,
@@ -105,6 +119,7 @@ return {
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+			vim.keymap.set("n", "<leader>oi", ":OrganizeImports<CR>", { desc = "[O]rganize [I]mports" })
 		end,
 	},
 }
