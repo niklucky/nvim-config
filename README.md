@@ -29,6 +29,18 @@ brew install jesseduffield/lazygit/lazygit
 
 https://github.com/jesseduffield/lazygit
 
+## eslint
+
+After updating eslint to a new flat config, I had to update the eslint plugin in nvim:
+
+[Instructions on nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#eslint)
+
+Installing vscode eslint server:
+
+```shell
+npm i -g vscode-langservers-extracted
+```
+
 ## Tech stack
 
 Something was setup and tested because I need it right now, something I will setup later.

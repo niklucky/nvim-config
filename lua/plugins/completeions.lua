@@ -73,6 +73,14 @@ return {
 				}, {
 					{ name = "buffer" },
 				}),
+
+				-- For SQL completeions
+				cmp.setup.filetype({ "sql" }, {
+					sources = {
+						{ name = "vim-dadbod-completion" },
+						{ name = "buffer" },
+					},
+				}),
 			})
 		end,
 	},
