@@ -13,13 +13,14 @@
 --
 
 return {
-	"norcalli/nvim-colorizer.lua",
-	config = function()
-		require("colorizer").setup({
-			javascript = { css_fn = true },
-			"html",
-			css = { css_fn = true },
-			-- "!vim", -- Exclude vim from highlighting.
-		})
-	end,
+  "catgoose/nvim-colorizer.lua",
+  config = function()
+    require 'colorizer'.setup {
+      'css',
+      'javascript',
+      html = {
+        mode = 'foreground',
+      }
+    }
+  end,
 }
