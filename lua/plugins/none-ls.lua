@@ -2,8 +2,15 @@ return {
   "nvimtools/none-ls.nvim",
   dependencies = {
     "nvimtools/none-ls-extras.nvim",
+    "williamboman/mason.nvim",
+    "jay-babu/mason-null-ls.nvim",
   },
   config = function()
+    require("mason").setup()
+    require("mason-null-ls").setup({
+      automatic_installation = true,
+    })
+
     local null_ls = require("null-ls")
 
     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -23,7 +30,7 @@ return {
 
       -- you can reuse a shared lspconfig on_attach callback here
       on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
+        if client:supports_method("textDocument/formatting") then
           vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
           vim.api.nvim_create_autocmd("BufWritePre", {
             group = augroup,
